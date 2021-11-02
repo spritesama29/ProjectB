@@ -1,0 +1,10 @@
+Kyle Stearns, Scott Belliveau and Shawn Lovell
+1. We made a while loop that iterates through the string taken and goes until it hits "0". Each time the while loop is called Interrupt 10 is called at the string index i + 256. We can verify this by putting in a string as an argument and watching it print.
+2.In part 2 we made a while loop that continues as long as the input from interrupt 16 isn't 0xd or enter, the loop will continue. If input is 0x8 and bigger than 0, to avoid backspace with no characters, then it will print backspace, print an empty character, then print backspace again in order to do the back space. If the input isnt enter, it makes the line at i to the current interrupt 16 and print the current line[i] as well as making I +1. After the while loop is exited it makes line[i+1] a line feed and the character after that 0. After that you print both of those and then this will allow you to type and get a response in real time and can backspace as well. Once you press enter it will print what it typed back to you. To verify this you can test the function and see that it works as intended.
+3. For part 3 we made the readSector by using interrupt 13 and putting in the arguments detailed to us in the Project B assignment. To test this you can put make a test file and put it at a sector and then have this program read the sector and print the message in the test file back at you
+4. In part 4 we made the handle21 by uncommenting some lines from our kernel.asm and then making the handleInterrupt21 with 4 arguments listed in the assignment. We then can verify that is works by putting in a test print string and see if it runs when the function is run.
+5. For part 5 we put more into the handleIntterupt21 and placed an if statement ladder by following the ladder given to use in the assignment paper. To verify this we can put char line[80];
+	makeInterrupt21();
+	interrupt(0x21,1,line,0,0);
+	interrupt(0x21,0,line,0,0);
+into our main and see that when it runs it allows us to type on the screen and then echo back what we typed
